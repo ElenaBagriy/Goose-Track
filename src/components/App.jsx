@@ -1,16 +1,22 @@
+import { GlobalStyle } from 'styles/GlobalStyle';
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+import StartPage from "pages/StartPage/StartPage";
+import { Theme } from 'styles/Theme';
+
+// const StartPage = lazy(() => import('pages/StartPage/StartPage'));
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Theme>
+      <GlobalStyle />
+      <Routes>
+        <Route
+          path="/"
+          element={<StartPage/>} />
+      </Routes>
+      </Theme>
+    </>
   );
 };
