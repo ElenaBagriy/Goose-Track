@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
+export const Section = styled.main`
     padding: 64px 20px;
 
     @media screen and (min-width: 768px) {
@@ -9,6 +9,41 @@ export const Section = styled.section`
 
     @media screen and (min-width: 1400px) {
         padding: 64px 128px 100px;
+    }
+`;
+
+export const DescriptionList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+`;
+
+export const DescriptionItem = styled.li`
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media screen and (min-width: 768px) {
+        gap: 48px;
+
+        &:nth-child(2n){
+            & div:nth-of-type(1) {
+                margin-left: auto;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1400px) {
+        flex-direction: row;
+        align-items: center;
+        gap: 228px;
+
+        &:nth-child(2n){
+            flex-direction: row-reverse;
+            & div:nth-of-type(1) {
+                margin-left: auto;
+            }
+        }
     }
 `;
 
@@ -65,5 +100,9 @@ export const Text = styled.p`
     font-size: 14px;
     font-weight: 500;
     line-height: 1.29;  
+
+    @media screen and (min-width: 768px) {
+        width: 275px;
+    }
 `;
 

@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import gooseMobile1x from '../../../images/StartPage/mobile/goose-mobile@1x.png';
-import gooseMobile2x from '../../../images/StartPage/mobile/goose-mobile@2x.png';
-import gooseDesktop1x from '../../../images/StartPage/desktop/goose@1x.png';
-import gooseDesktop2x from '../../../images/StartPage/desktop/goose@2x.png';
+import gooseMobile1x from '../../../images/StartPage/goose-mobile@1x.png';
+import gooseMobile2x from '../../../images/StartPage/goose-mobile@2x.png';
+import gooseDesktop1x from '../../../images/StartPage/goose-desktop@1x.png';
+import gooseDesktop2x from '../../../images/StartPage/goose-desktop@2x.png';
 
 export const Header = styled.header`
   height: 812px;
@@ -16,7 +16,7 @@ export const Header = styled.header`
   color: ${(props) => props.theme.colors.white};
 
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
+  @media screen and (min-width: 768px) and (max-width: 1399px) {
     height: 1024px;
     padding-top: 330px;
     padding-bottom: 330px;
@@ -24,7 +24,8 @@ export const Header = styled.header`
     padding-right: 32px;
   }
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1400px) {
+      min-height: 770px;
       height: 100vh;
       padding-top: 187px;
       padding-bottom: 200px;
@@ -52,7 +53,7 @@ export const Title = styled.h1`
         line-height: 1.3;
     }
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1400px) {
         font-size: 120px;
         line-height: 1.25;
     }
