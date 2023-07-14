@@ -2,7 +2,6 @@ import { StartPageHero } from 'components/StartPageComponents/StartPageHero/Star
 import { StartPageMain } from 'components/StartPageComponents/StartPageMain/StartPageMain';
 import { StartPageReviews } from 'components/StartPageComponents/StartPageReviews/StartPageReviews';
 import React from 'react';
-import { Container } from 'shared/services/reusableComponents/Container/Container';
 
 const StartPage = () => {
     return <>

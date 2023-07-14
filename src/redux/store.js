@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-  persistReducer,
+  // persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,14 +9,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 import { reviewsReducer } from './reviews/reviewsSlice';
 
-const userConfig = {
-  key: 'token',
-  storage,
-  whitelist: ['refreshToken', 'accessToken'],
-};
+// const userConfig = {
+//   key: 'token',
+//   storage,
+//   whitelist: ['refreshToken', 'accessToken'],
+// };
 
 export const store = configureStore({
   reducer: {

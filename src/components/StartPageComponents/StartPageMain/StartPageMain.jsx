@@ -38,11 +38,11 @@ export const StartPageMain = () => {
                         </source>
                         <source
                             srcSet={`${calendarTablet1x} 1x, ${calendarTablet2x} 2x`}
-                            media="(max-width: 1439px)">
+                            media="(max-width: 1399px)">
                         </source>
                         <source
                             srcSet={`${calendarDesktop1x} 1x, ${calendarDesktop2x} 2x`}
-                            media="(min-width: 1440px)">
+                            media="(min-width: 1400px)">
                         </source>
                         <img src={calendarDesktop1x} alt="schedule"></img>
                     </picture>

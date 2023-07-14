@@ -129,7 +129,7 @@ export const LoginButton = styled(NavLink)`
     }
 
     &:hover,
-    :focus {
+    &:focus {
         color: ${(props) => props.theme.button.hover};
         box-shadow: ${props => props.theme.hover.boxShadow};
     }
@@ -156,7 +156,7 @@ export const SignupButton = styled(NavLink)`
     }
 
     &:hover,
-    :focus {
+    &:focus {
         color: ${(props) => props.theme.colors.lightBlue};
     }
 `;

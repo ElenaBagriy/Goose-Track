@@ -8,7 +8,7 @@ export const Section = styled.main`
     }
 
     @media screen and (min-width: 1400px) {
-        padding: 64px 128px 100px;
+        padding: 64px 128px 100px 128px;
     }
 `;
 
@@ -40,9 +40,14 @@ export const DescriptionItem = styled.li`
 
         &:nth-child(2n){
             flex-direction: row-reverse;
+            justify-content: flex-end;
             & div:nth-of-type(1) {
-                margin-left: auto;
+                margin-left: 0;
             }
+        }
+
+        &:nth-child(2n+1){
+            justify-content: end;
         }
     }
 `;

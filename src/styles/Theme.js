@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import { selectThemeIsLight } from 'redux/theme/themeSelectors';
 import { ThemeProvider } from 'styled-components';
 
