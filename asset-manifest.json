@@ -1,13 +1,43 @@
 {
   "files": {
-    "main.css": "/Goose-Track/static/css/main.7acaea2f.css",
-    "main.js": "/Goose-Track/static/js/main.07d3183d.js",
+    "main.css": "/Goose-Track/static/css/main.e401943f.css",
+    "main.js": "/Goose-Track/static/js/main.daa278c5.js",
+    "static/media/Inter-Bold.ttf": "/Goose-Track/static/media/Inter-Bold.88fa7ae373b07b41ecce.ttf",
+    "static/media/Inter-SemiBold.ttf": "/Goose-Track/static/media/Inter-SemiBold.4d56bb21f2399db8ad48.ttf",
+    "static/media/Inter-Medium.ttf": "/Goose-Track/static/media/Inter-Medium.6dcbc9bed1ec438907ee.ttf",
+    "static/media/Inter-Regular.ttf": "/Goose-Track/static/media/Inter-Regular.e89cb19905e7db5591b0.ttf",
+    "static/media/calendar-tablet@2x.png": "/Goose-Track/static/media/calendar-tablet@2x.1de3321df8caafbc4a66.png",
+    "static/media/calendar-desktop@2x.png": "/Goose-Track/static/media/calendar-desktop@2x.f567341685a3359938eb.png",
+    "static/media/sidebar-tablet@2x.png": "/Goose-Track/static/media/sidebar-tablet@2x.78ae5bf6103a469cc058.png",
+    "static/media/sidebar-desktop@2x.png": "/Goose-Track/static/media/sidebar-desktop@2x.9bf5434a510ac451308d.png",
+    "static/media/calendar-mobile@2x.png": "/Goose-Track/static/media/calendar-mobile@2x.fe807a0e48628a408021.png",
+    "static/media/calendar-tablet@1x.png": "/Goose-Track/static/media/calendar-tablet@1x.edd8f69472f73b0ddce7.png",
+    "static/media/sidebar-mobile@2x.png": "/Goose-Track/static/media/sidebar-mobile@2x.95154b0b5a36c7c3d79d.png",
+    "static/media/day-tablet@2x.png": "/Goose-Track/static/media/day-tablet@2x.5d565779cd1bf9b055e8.png",
+    "static/media/calendar-desktop@1x.png": "/Goose-Track/static/media/calendar-desktop@1x.212698d679570781f050.png",
+    "static/media/day-desktop@2x.png": "/Goose-Track/static/media/day-desktop@2x.d49444968cc1d2621570.png",
+    "static/media/sidebar-tablet@1x.png": "/Goose-Track/static/media/sidebar-tablet@1x.e2779969c130aaaef862.png",
+    "static/media/sidebar-desktop@1x.png": "/Goose-Track/static/media/sidebar-desktop@1x.f7b0dace8546941985d3.png",
+    "static/media/calendar-mobile@1x.png": "/Goose-Track/static/media/calendar-mobile@1x.8962deb43978f3346613.png",
+    "static/media/day-mobile@2x.png": "/Goose-Track/static/media/day-mobile@2x.17309177bf8ec4231b2a.png",
+    "static/media/day-tablet@1x.png": "/Goose-Track/static/media/day-tablet@1x.e766840cbf8f9c28682b.png",
+    "static/media/signUpGoose@2x.png": "/Goose-Track/static/media/signUpGoose@2x.0b2f9bac7ce76e922e39.png",
+    "static/media/day-desktop@1x.png": "/Goose-Track/static/media/day-desktop@1x.8287fb4c7cd28ee4d945.png",
+    "static/media/sidebar-mobile@1x.png": "/Goose-Track/static/media/sidebar-mobile@1x.e486fc2bb92d2d757abe.png",
+    "static/media/elements@2x.png": "/Goose-Track/static/media/elements@2x.44c6640747950bba7cf3.png",
+    "static/media/signUpGoose@1x.png": "/Goose-Track/static/media/signUpGoose@1x.09db1b088e0f73b4aa70.png",
+    "static/media/day-mobile@1x.png": "/Goose-Track/static/media/day-mobile@1x.e65801f22eeef241601d.png",
+    "static/media/sprite.svg": "/Goose-Track/static/media/sprite.fce7cccc35ce9b87ac2e2aef4d7726ca.svg",
+    "static/media/slick.svg": "/Goose-Track/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Goose-Track/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Goose-Track/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Goose-Track/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Goose-Track/index.html",
-    "main.7acaea2f.css.map": "/Goose-Track/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/Goose-Track/static/js/main.07d3183d.js.map"
+    "main.e401943f.css.map": "/Goose-Track/static/css/main.e401943f.css.map",
+    "main.daa278c5.js.map": "/Goose-Track/static/js/main.daa278c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.e401943f.css",
+    "static/js/main.daa278c5.js"
   ]
 }
