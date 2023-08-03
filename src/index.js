@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <CssBaseline />
       <BrowserRouter
-      // basename="/goose-track"
+      basename="/goose-track"
       >
         <App />
       </BrowserRouter>
