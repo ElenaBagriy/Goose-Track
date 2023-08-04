@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoose_track=self.webpackChunkgoose_track||[]).push([[816],{5816:function(e,a,n){n.r(a);var r=n(184);a.default=function(){return(0,r.jsx)(r.Fragment,{children:"CalendarPage"})}}}]);
+//# sourceMappingURL=816.3f07bdfe.chunk.js.map

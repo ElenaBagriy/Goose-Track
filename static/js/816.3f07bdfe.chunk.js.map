@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/816.3f07bdfe.chunk.js","mappings":"mIAMA,UANqB,WACjB,OAAOA,EAAAA,EAAAA,KAAAC,EAAAA,SAAA,CAAAC,SAAE,gBAGb,C","sources":["pages/CalendarPage/CalendarPage.jsx"],"sourcesContent":["const CalendarPage = () => {\n    return <>\n        CalendarPage\n    </>;\n};\n\nexport default CalendarPage;"],"names":["_jsx","_Fragment","children"],"sourceRoot":""}
