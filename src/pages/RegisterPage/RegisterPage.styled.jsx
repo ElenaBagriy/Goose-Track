@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import goose1x from '../../images/SignUpPage/signUpGoose@1x.png';
 import goose2x from '../../images/SignUpPage/signUpGoose@2x.png';
-import text1x from '../../images/SignUpPage/elements@1x.png';
-import text2x from '../../images/SignUpPage/elements@2x.png';
 
 const expandBounce = keyframes`
 0% {
@@ -34,7 +32,6 @@ export const FormWrapper = styled.div`
 export const Goose = styled.div`
     position: absolute;
     bottom: 0;
-    left: 49px;
     width: 401px;
     height: 344px;
     background-image: url(${goose1x});
@@ -48,42 +45,47 @@ export const Goose = styled.div`
   }
 `;
 
-  export const SpeechBubble = styled.div`
-  position: absolute;
-  /* left: 49px; */
-  bottom: 0;
-  width: 400px;
-  height: 416px;
-  transform-origin: 0% 100%;
-  /* text-align: center; */
-  background-image: url(${text1x});
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-      background-image: url(${text2x});
-  }
 
-  transform: scale(0);
-  animation-name: ${expandBounce};
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
-
-  /* &::before {
-    content: "";
-    display: block;
-    width: 0;
+export const SpeechBubble = styled.div`
     position: absolute;
-    bottom: -25px;
-    left: 5px;
-    border-style: solid;
-    border-width: 15px;
-    border-color: #5a5a5a transparent transparent #5a5a5a;
-    transform: rotate(10deg);
-  } */
-
+    bottom: 233px;
+    left: 30.97px;
+    transform: scale(0);
+    animation-name: ${expandBounce};
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    
+    & svg{
+      transform: rotate(-24deg);
+    }
   `;
 
+export const Text = styled.div`
+    position: absolute;
+    box-sizing: content-box;
+    top: 28.67px;;
+    left: 12.8px;
+    width: 141px;
+    color: #111;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.14;
+    overflow: hidden;
+    transform: rotate(-27deg);
+    margin: 0 auto;
+    
+    & .accent {
+      color: ${props => props.theme.colors.mainBlue};
+    }
+
+`;
+
+export const ImageWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 49px;
+  width: 400px;
+  height: 416px;
+`

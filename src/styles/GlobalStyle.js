@@ -3,6 +3,7 @@ import InterMedium from '../styles/fonts/Inter/Inter-Medium.ttf';
 import InterSemiBold from '../styles/fonts/Inter/Inter-SemiBold.ttf';
 import InterBold from '../styles/fonts/Inter/Inter-Bold.ttf';
 import { createGlobalStyle } from 'styled-components';
+// import { modernNormalizeCss } from 'emotion-modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -56,6 +57,8 @@ body {
   background-color: white; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: normal;
+  box-sizing: border-box;
 }
 
 code {
@@ -107,6 +110,7 @@ td {
   padding: 0;
   border: 0;
   vertical-align: baseline;
+  letter-spacing: normal;
 }
 
 /* Reset list styles */

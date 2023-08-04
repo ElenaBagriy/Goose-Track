@@ -47,13 +47,12 @@ export const RegisterForm = () => {
         }}
         >
             {({ errors, touched, values }) => {
-                console.log(errors);
                 return (<StyledForm>
                 <Title>Sign Up</Title>
                 <div>
-                <Label error={errors.name} touched={touched.name}>
+                <Label error={errors.name} touched={touched.name?.toString()}>
                     Name
-                    <StyledField name="name" placeholder="Enter your name" value={values.name} error={errors.name} touched={touched.name}/>
+                    <StyledField name="name" placeholder="Enter your name" value={values.name} error={errors.name} touched={touched.name?.toString()}/>
                     {!touched.name ? null : 
                     (errors.name && touched.name ? <SVG height="24" width="24">
                         <use href={sprite + '#error'}></use>
@@ -63,9 +62,9 @@ export const RegisterForm = () => {
                     </SVG>)}
                 <ErrorMessage name="name" >{msg => <Error>{msg}</Error>}</ErrorMessage>
                 </Label>
-                <Label error={errors.email} touched={touched.email}>
+                <Label error={errors.email} touched={touched.email?.toString()}>
                     Email
-                    <StyledField name="email" type="email" placeholder="Enter email" value={values.email} error={errors.email} touched={touched.email}/>
+                    <StyledField name="email" type="email" placeholder="Enter email" value={values.email} error={errors.email} touched={touched.email?.toString()}/>
                     {!touched.email ? null : 
                     (errors.email && touched.email ? <SVG height="24" width="24">
                         <use href={sprite + '#error'}></use>
@@ -75,10 +74,10 @@ export const RegisterForm = () => {
                     </SVG>)}
                 <ErrorMessage name="email" >{msg => <Error>{msg}</Error>}</ErrorMessage>
                 </Label>
-                <Label error={errors.password} touched={touched.password}>
+                <Label error={errors.password} touched={touched.password?.toString()}>
                     Password
-                    <StyledField name="password" placeholder="Enter password" value={values.password} type={passwordType} error={errors.password} touched={touched.password}/>
-                    <VisibilityBtn onClick={togglePassword} error={errors.password} touched={touched.password}>
+                    <StyledField name="password" placeholder="Enter password" value={values.password} type={passwordType} error={errors.password} touched={touched.password?.toString()}/>
+                    <VisibilityBtn onClick={togglePassword} error={errors.password} touched={touched.password?.toString()}>
                   {passwordType === 'password' ? (
                     <VisibilityOff />
                   ) : (

@@ -49,9 +49,9 @@ export const LoginForm = () => {
                 <StyledForm>
                 <Title>Log In</Title>
                 <div>
-                <Label error={errors.email} touched={touched.email}>
+                <Label error={errors.email} touched={touched.email?.toString()}>
                     Email
-                    <StyledField name="email" type="email" placeholder="Enter email" value={values.email} error={errors.email} touched={touched.email}/>
+                    <StyledField name="email" type="email" placeholder="Enter email" value={values.email} error={errors.email} touched={touched.email?.toString()}/>
                     {!touched.email ? null : 
                     (errors.email && touched.email ? <SVG height="24" width="24">
                         <use href={sprite + '#error'}></use>
@@ -61,10 +61,10 @@ export const LoginForm = () => {
                     </SVG>)}
                 <ErrorMessage name="email" >{msg => <Error>{msg}</Error>}</ErrorMessage>
                 </Label>
-                <Label error={errors.password} touched={touched.password}>
+                <Label error={errors.password} touched={touched.password?.toString()}>
                     Password
-                    <StyledField name="password" placeholder="Enter password" type={passwordType} value={values.password} error={errors.password} touched={touched.password}/>
-                    <VisibilityBtn onClick={togglePassword} error={errors.password} touched={touched.password}>
+                    <StyledField name="password" placeholder="Enter password" type={passwordType} value={values.password} error={errors.password} touched={touched.password?.toString()}/>
+                    <VisibilityBtn onClick={togglePassword} error={errors.password} touched={touched.password?.toString()}>
                   {passwordType === 'password' ? (
                     <VisibilityOff/>
                   ) : (

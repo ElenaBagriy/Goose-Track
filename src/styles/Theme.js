@@ -9,7 +9,6 @@ const setTheme = isLight => {
       lightBlue: `#DCEBF7`,
       white: '#ffffff',
       black: '#171820',
-      // error: '#DA1414',
       error: '#E74A3B',
       success: '#3CBC81',
 
@@ -24,6 +23,7 @@ const setTheme = isLight => {
 
     hover: {
       transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      
       boxShadow:
         '1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12)',
     },
