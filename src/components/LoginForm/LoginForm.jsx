@@ -37,7 +37,7 @@ export const LoginForm = () => {
             .then((res) =>{
                     toast.success('You have logged in successfully');
                     actions.resetForm();
-                    navigate('/calendar/month');
+                    navigate('/calendar');
                 })
             .catch((error) => {
                 toast.error(error);

@@ -2,7 +2,8 @@ import { onCapitalise } from "shared/services/onCapitalise";
 import { ThemeToggler } from "./ThemeToggler/ThemeToggler"
 import { UserInfo } from "./UserInfo/UserInfo"
 import { useLocation } from "react-router-dom";
-import { HeaderStyled, Title } from "./Header.styled";
+import { Box, HeaderStyled, Title, Wrapper } from "./Header.styled";
+import { FeedbackButton } from "./FeedbackButton/FeedbackButton";
 
 export const Header = () => {
     const { pathname } = useLocation();
@@ -15,8 +16,13 @@ export const Header = () => {
     };
 
     return <HeaderStyled>
-    <Title>{title}</Title>
-    <ThemeToggler/>
-    <UserInfo/>
+        <Title>{title}</Title>
+        <Wrapper>
+            <FeedbackButton/>
+            <Box>
+                <ThemeToggler/>
+                <UserInfo/>
+            </Box>
+        </Wrapper>
     </HeaderStyled>
 }

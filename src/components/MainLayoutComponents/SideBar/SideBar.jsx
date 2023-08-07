@@ -1,10 +1,10 @@
 import { LogoutButton } from "./LogoutButton/LogoutButton"
+import { Section } from "./SideBar.styled"
 import { UserNav } from "./UserNav/UserNav"
 
 export const SideBar = () => {
-    return <div>
-        SideBar
+    return <Section>
     <UserNav/>
     <LogoutButton/>
-    </div>
+    </Section>
 }

@@ -38,7 +38,7 @@ export const RegisterForm = () => {
             .then((res) =>{
                     toast.success('Thank you for registering! Your account has been created successfully.');
                     actions.resetForm();
-                    navigate('/calendar/month');
+                    navigate('/calendar');
                 })
             .catch((error) => {
                 toast.error(error);

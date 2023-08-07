@@ -23,15 +23,66 @@ export const UserAPI = {
 
   login: async credentials => {
     const { data } = await axios.post('/user/login', credentials);
-    console.log('data', data);
-    setAuthHeader(data.accessToken);
+    setAuthHeader(data.data.accessToken);
     return data;
   },
 
   logout: async () => {
-    await axios.post('/user/logout');
+    await axios.get('/user/logout');
     clearAuthHeader();
   },
+
+  refresh: async () => {
+    const {data} = await axios.post('/user/refresh');  // надо отправлять refresh token
+    setAuthHeader(data.data.accessToken);
+    return data;
+  },
+
+  getUserInfo: async () => {
+    const token = JSON.parse(localStorage.getItem('persist:token'));  // надо ли
+    const accessToken = JSON.parse(token.accessToken);
+    setAuthHeader(accessToken);
+
+    const {data} = await axios.get('/user/info');  
+    return data;
+  },
+
+  updateUser: async credentials => {
+    const {data} = await axios.patch('/user/refresh', credentials); 
+    return data;
+  },
+};
+  //=============Task==============================
+
+  export const TasksAPI = {
+  getTasksList: async credentials => {
+    const {data} = await axios.get('/task/by-month', credentials); 
+    return data;
+  },
+
+  createTask: async credentials => {
+    const {data} = await axios.post('/task', credentials); 
+    return data;
+  },
+
+  deleteTask: async id => {
+    const {data} = await axios.delete(`/task/${id}`); 
+    return data;
+  },
+
+  postTask: async id => {
+    const {data} = await axios.put(`/task/${id}`); 
+    return data;
+  },
+};
+
+//==========Reviews===============
+export const ReviewsAPI = {
+  getReviews: async () => {
+    const { data } = await axios.get('/review');
+    return data;
+  },
+};
 
 //   // Новая версия
 
@@ -80,7 +131,7 @@ export const UserAPI = {
 //     const { data } = await axios.post('users/subscribe', info);
 //     return data;
 //   },
-};
+// };
 
 // //=========Recipes==============
 // export const RecipesAPI = {
@@ -170,10 +221,3 @@ export const UserAPI = {
 //   },
 // };
 
-//==========Reviews===============
-export const ReviewsAPI = {
-  getReviews: async () => {
-    const { data } = await axios.get('/review');
-    return data;
-  },
-};
