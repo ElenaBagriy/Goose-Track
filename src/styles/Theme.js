@@ -1,8 +1,8 @@
-// import { useSelector } from 'react-redux';
-// import { selectThemeIsLight } from 'redux/theme/themeSelectors';
 import { useSelector } from 'react-redux';
 import { selectThemeIsLight } from 'redux/selectors';
 import { ThemeProvider } from 'styled-components';
+
+
 
 const setTheme = isLight => {
   return {
@@ -15,23 +15,33 @@ const setTheme = isLight => {
       success: '#3CBC81',
       background: `${isLight ? '#F7F6F9' : '#181921'}`,
       sidebar: `${isLight ? '#ffffff' : '#13151A'}`,
+      activeLink: `${isLight ? '#E3F3FF' : '#3E85F3'}`,
+      page: `${isLight ? '#ffffff' : '#21222C'}`,
+      inputBorder: `${isLight ? 'rgba(17, 17, 17, 0.10)' : 'rgba(255, 255, 255, 0.15)'}`,
+      avatarBg: `${isLight ? '#F8F8F8' : '#171820'}`,
     },
 
     text: {
-      name: `${isLight ? '#343434' : '#ffffff'}`,
+      header: `${isLight ? '#343434' : '#ffffff'}`,
       logo: `${isLight ? '#3E85F3' : '#E3F3FF'}`,
       panel: `${isLight ? 'rgba(52, 52, 52, 0.50)' : 'rgba(250, 250, 250, 0.30)'}`,
       nav: `${isLight ? 'rgba(52, 52, 52, 0.50)' : '#ffffff'}`,
+      activeLink: `${isLight ? '#3E85F3' : '#ffffff'}`,
+      role: `${isLight ? '#343434' : 'rgba(250, 250, 250, 0.30)'}`,
+      label: `${isLight ? '#111111' : 'rgba(250, 250, 250, 0.30)'}`,
+      input: `${isLight ? '#111111' : '#ffffff'}`,
     },
 
     button: {
       hover: `#2B78EF`,
-      
+      boxShadow: `4px 2px 16px 0px rgba(136, 165, 191, 0.48)`,
       text: `${isLight ? '#fafafa' : '#8BAA36'}`,
     },
 
     hover: {
       transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
+      linkBg: `${isLight ? '#E3F3FF' : 'transparent'}`,
+      linkText: `${isLight ? 'rgba(52, 52, 52, 0.50)' : '#3E85F3'}`,
 
       boxShadow:
         '1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.12)',

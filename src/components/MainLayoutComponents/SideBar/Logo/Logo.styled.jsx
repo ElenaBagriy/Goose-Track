@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LogoText = styled.p`
@@ -23,17 +24,18 @@ export const AccentText = styled.span`
     font-style: italic;
 `;
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled(NavLink)`
     display: flex;
     gap: 6px;
     align-items: center;
-    margin-bottom: 64px;
+    transition: scale ${props => props.theme.hover.transition};
 
     @media screen and (min-width: 1400px) {
-        margin-bottom: 50px;
-    }
-    @media screen and (min-width: 1400px) {
         gap: 10px;
-        margin-bottom: 32px;
+    }
+
+    &:hover,
+    &:focus {
+        scale: 1.1;
     }
 `;

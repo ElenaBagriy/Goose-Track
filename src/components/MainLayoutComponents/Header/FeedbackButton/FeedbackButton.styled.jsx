@@ -14,7 +14,7 @@ export const Button = styled.button`
   font-weight: 600;
   line-height: 1.33; 
   background-color: ${props => props.theme.colors.mainBlue};
-  transition: background-color ${props => props.theme.hover.transition};
+  transition: background-color ${props => props.theme.hover.transition}, box-shadow ${props => props.theme.hover.transition};
 
   @media screen and (min-width: 768px) {
     padding: 12px 32px;
@@ -26,5 +26,6 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: ${props => props.theme.button.hover};
+    box-shadow: ${props => props.theme.button.boxShadow};
   }
 `;

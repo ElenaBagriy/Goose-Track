@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Name = styled.p`
-    color: ${props => props.theme.text.name};
+    color: ${props => props.theme.text.header};
     font-family: Inter;
     font-size: 14px;
     font-style: normal;

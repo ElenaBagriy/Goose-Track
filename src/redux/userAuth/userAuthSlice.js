@@ -86,7 +86,7 @@ const userSlice = createSlice({
       // ------------ Get user info ----------------
       .addCase(userGetInfo.pending, state => {
         state.isLoading = true;
-        state.error = true;
+        state.error = false;
       })
       .addCase(userGetInfo.fulfilled, (state, {payload}) => {
         state.isLoading = false;
@@ -96,7 +96,6 @@ const userSlice = createSlice({
         state.userData.phone = payload.phone;
         state.userData.skype = payload.skype;
         state.userData.image = payload.userImgUrl;
-        state.userData.id = payload._id
         state.accessToken = payload.accessToken;
         state.refreshToken = payload.refreshToken;
         state.error = false;

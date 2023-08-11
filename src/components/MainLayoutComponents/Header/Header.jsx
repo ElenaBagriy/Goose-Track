@@ -4,9 +4,13 @@ import { UserInfo } from "./UserInfo/UserInfo"
 import { useLocation } from "react-router-dom";
 import { Box, HeaderStyled, Title, Wrapper } from "./Header.styled";
 import { FeedbackButton } from "./FeedbackButton/FeedbackButton";
+import { useMediaQuery } from "@mui/material";
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 
-export const Header = () => {
+export const Header = ({isOpen, handleOpen, handleClose}) => {
     const { pathname } = useLocation();
+    const isMobile = useMediaQuery('(max-width: 1399px)');
+
     let title = '';
 
     if (pathname !== '/account') {
@@ -16,6 +20,7 @@ export const Header = () => {
     };
 
     return <HeaderStyled>
+        {isMobile && <BurgerMenu isOpen={isOpen} handleOpen={handleOpen} handleClose={handleClose}/> }
         <Title>{title}</Title>
         <Wrapper>
             <FeedbackButton/>

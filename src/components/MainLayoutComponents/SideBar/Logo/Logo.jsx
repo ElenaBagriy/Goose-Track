@@ -9,7 +9,7 @@ import logoDesktop2x from '../../../../images/Logo/logo-desktop@2x.png';
 
 
 export const Logo = () => {
-    return <LogoWrapper>
+    return <LogoWrapper to='/'>
             <picture>
                 <source 
                     srcSet={`${logoMobile1x} 1x, ${logoMobile2x} 2x`} 

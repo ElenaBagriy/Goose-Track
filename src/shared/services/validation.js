@@ -35,3 +35,37 @@ export const LoginSchema = Yup.object().shape({
         'Password must contain minimum 8 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.'
       ),
 });
+
+export const userFormSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('This field is required')
+      .matches(
+        nameRegExp,
+        "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      )
+      .max(16, 'Name may contain only 16 characters'),
+    phone: Yup.string().matches(phoneRegExp, {
+      message:
+        'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+      excludeEmptyString: true,
+    }),
+    birthday: Yup.date('Invalid date format'),
+    skype: Yup.string().max(16, 'Skype may contain only 16 characters'),
+    email: Yup.string()
+      .email('Enter a valid email')
+      .required('Email is required.'),
+    userImgUrl: Yup.mixed().test('is-valid-type', 'Invalid image type', value => {
+      return value === '' || isValidFileType(value);
+    }),
+  });
+
+  const validFileExtensions = {
+    image: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'webp'],
+  };
+  
+  const isValidFileType = value => {
+    if (typeof value === 'string' && value.includes('image')) return true;
+    if (value.length === 0) return true;
+    const fileName = value[0].name.toLowerCase();
+    return validFileExtensions['image'].indexOf(fileName.split('.').pop()) > -1;
+  };

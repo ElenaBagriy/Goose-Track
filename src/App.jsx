@@ -1,8 +1,11 @@
 import { GlobalStyle } from 'styles/GlobalStyle';
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Theme } from 'styles/Theme';
 import 'react-toastify/dist/ReactToastify.css';
+import { registerLocale } from 'react-datepicker';
+import enGB from "date-fns/locale/en-GB";
+
 
 const StartPage = lazy(() => import('pages/StartPage/StartPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -12,10 +15,17 @@ const MainLayout = lazy(() => import("./pages/MainLayout/MainLayout"));
 const AccountPage = lazy(() => import("./pages/AccountPage/AccountPage"));
 const CalendarPage = lazy(() => import("./pages/CalendarPage/CalendarPage"));
 const StatisticsPage = lazy(() => import("./pages/StatisticsPage/StatisticsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+
 
 
 
 export const App = () => {
+
+  useEffect(() => {
+    registerLocale("en-GB", enGB);
+}, []);
+
   return (
     <>
       <Theme>
@@ -37,6 +47,7 @@ export const App = () => {
             </Route>
             <Route path="statistics" element={<StatisticsPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       
