@@ -270,4 +270,10 @@ export const Button = styled.button`
         background-color: ${props => props.theme.button.hover};
         box-shadow: ${props => props.theme.button.boxShadow};
     }
+
+    &:disabled {
+        background-color: ${props => props.theme.button.disabled};
+        box-shadow: none;
+
+    }
 `;

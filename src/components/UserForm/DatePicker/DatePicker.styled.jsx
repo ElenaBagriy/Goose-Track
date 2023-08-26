@@ -110,7 +110,7 @@ export const Year = styled.span`
     }
 `;
 
-export const CalendarLabel = styled.label`
+export const CalendarWrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -245,7 +245,6 @@ export const StyledCalendarContainer = styled(CalendarContainer)`
     position: relative;
     border-radius: 16px;
     background-color: ${props => props.theme.colors.mainBlue};
-    /* height: 354px; */
     width: 327px;
     padding: 9px 0px;
     border: none;
@@ -255,4 +254,30 @@ export const StyledCalendarContainer = styled(CalendarContainer)`
         padding: 9px 18px;
 
     }
+`;
+
+export const CalendarButton = styled.button`
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-color: transparent;
+
+  & svg {
+    stroke: ${props => props.theme.text.input};
+    transition: stroke ${props => props.theme.hover.transition};
+  }
+
+  &:hover,
+  &:focus {
+    & svg {
+        stroke: ${props => props.theme.colors.mainBlue};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    bottom: 14px;
+  }
 `;

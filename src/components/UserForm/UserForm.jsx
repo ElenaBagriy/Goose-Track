@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Name, NameWrapper, Form, Role, Label, FormWrapper, FieldsWrapper, StyledField, Button, UserAvatarWrapper, AvatarLabel, HiddenInput, AddButton } from "./UserForm.styled";
 import { selectThemeIsLight, selectUser } from "redux/selectors";
 import avatarLight from '../../images/avatarLight.png';
 import avatarDark from '../../images/avatarDark.png';
 import sprite from '../../images/svg/sprite.svg';
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
 import { formatDate } from "shared/services/formatDate";
 import { StyledDatePicker } from "./DatePicker/DatePicker";
+import { userUpdate } from "redux/userAuth/userAuthOperations";
+import { userFormSchema } from "shared/services/validation";
 
 const startDate = new Date();
 
@@ -16,7 +19,8 @@ export const UserForm = () => {
     const userData = useSelector(selectUser);
     const {name, phone, birthday, email, skype, image} = userData;
     const [userImage, setUserImage] = useState('');
-
+    const [isDisabled, setIsDisabled] = useState(true);
+    const dispatch = useDispatch();
 
     const { 
         register, 
@@ -26,29 +30,51 @@ export const UserForm = () => {
         setValue,
         formState: { errors, isDirty, dirtyFields } 
     } = useForm({
+        resolver: yupResolver(userFormSchema),
         values: {
             name,
             email,
             phone: !phone ? '' : phone,
-            birthday: !birthday ? startDate : birthday,
+            birthday: !birthday ? startDate : new Date(birthday),
             skype: !skype ? '' : skype,
             image
           },
       });
 
+
     const onSubmit = (data, e) => {
-        console.log(data)
+        if(data.birthday === startDate) {
+            setValue('birthday', null)
+        };
+        
+        const preparedBirthday =
+        formatDate(data.birthday) === formatDate(startDate)
+        ? null
+        : formatDate(data.birthday);
+        const preparedUserImgUrl = data.image === '' ? '' : userImage;
+        const preparedPhone = data.phone === '' ? null : Number(data.phone);
+        const preparedSkype = data.skype === '' ? null : data.skype;
+        const preparedData = {
+            ...data,
+            phone: preparedPhone,
+            skype: preparedSkype,
+            birthday: preparedBirthday,
+            userImgUrl: preparedUserImgUrl,
+        };
+
+        console.log(preparedData);
+        dispatch(userUpdate(preparedData))
     };
 
-    // useEffect(() => {
-    //     if (name) setUserName(name);
-    //     if (phone) setUserPhone(phone);
-    //     if (skype) setUserSkype(skype);
-    //     if (email) setUserEmail(email);
-        // if (birthday) setUserBirthday(birthday);
+    useEffect(() => {
+        if (isDirty) {
+            setIsDisabled(false)
+        }
 
-    // }, [name, phone, skype, email, birthday])
+    }, [isDirty])
     
+
+    console.log(errors);
 
     return   <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
         <UserAvatarWrapper>
@@ -110,7 +136,7 @@ export const UserForm = () => {
                     type="email" />
                 </Label>
                 </FieldsWrapper>
-                <Button type="submit">
+                <Button type="submit" disabled={isDisabled}>
                     Save changes
                 </Button>
             </FormWrapper>

@@ -48,7 +48,7 @@ export const UserAPI = {
   },
 
   updateUser: async credentials => {
-    const {data} = await axios.patch('/user/refresh', credentials); 
+    const {data} = await axios.patch('/user/update', credentials); 
     return data;
   },
 };

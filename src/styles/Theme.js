@@ -36,6 +36,7 @@ const setTheme = isLight => {
       hover: `#2B78EF`,
       boxShadow: `4px 2px 16px 0px rgba(136, 165, 191, 0.48)`,
       text: `${isLight ? '#fafafa' : '#8BAA36'}`,
+      disabled: `${isLight ? 'rgba(0, 0, 0, 0.26)' : 'rgba(0, 0, 0, 0.12)'}`,
     },
 
     hover: {

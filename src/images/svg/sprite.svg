@@ -60,7 +60,7 @@
     <path d="M3.75 9H14.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" id="chevron-down">
-    <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" id="chevron-left">
     <path d="M11.25 13.5L6.75 9L11.25 4.5" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>

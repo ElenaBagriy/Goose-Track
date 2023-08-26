@@ -1,44 +1,21 @@
 
 import { Controller } from "react-hook-form";
-import DatePicker from "react-datepicker";
+import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { CalendarLabel, DateInput, DecreaseButton, IncreaseButton, Month, StyledCalendarContainer, X, Year } from "./DatePicker.styled";
+import { CalendarButton, CalendarWrapper, DateInput, DecreaseButton, IncreaseButton, Month, StyledCalendarContainer, Year } from "./DatePicker.styled";
 import sprite from '../../../images/svg/sprite.svg'
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const CustomHeader = (props) =>  {
 
     const {
-        changeMonth,
-        changeYear,
-        customHeaderCount,
-        date,
         decreaseMonth,
-        decreaseYear,
         increaseMonth,
-        increaseYear,
-        isRenderAriaLiveMessage,
-        monthContainer,
         monthDate,
         nextMonthButtonDisabled,
-        nextYearButtonDisabled,
         prevMonthButtonDisabled,
-        prevYearButtonDisabled,
-        selectingDate,
     } = props;
-
-
-    const days = [
-        "M",
-        "T",
-        "W",
-        "T",
-        "May",
-        "F",
-        "S",
-        "S"
-      ];
 
     return <div>
         <DecreaseButton 
@@ -87,39 +64,82 @@ const MyContainer = ({ children }) => {
 export const StyledDatePicker = ({control, children}) => {
 
     const [open, setOpen] = useState(false);
-    const datePickerRef = useRef(null);
+    const datePickerRef = useRef(null)
+
+    const onClick = (e) => {
+        if (!open) {
+            setOpen(true)
+        } else {
+            setOpen(false)
+        }
+    };
 
     const handleClose = () => {
         setOpen(false);
       };
 
-    return <CalendarLabel>
-        {children}
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
+    useEffect(() => {
+
+        const onKeyDown = (e) => {
+            if(open === true && e.key === 'Escape') {
+                setOpen(false)
+            }
+        };
+
+        const onClick = (e) => {
+            if(open === true && !e.target.closest('.datePicker')) {
+                setOpen(false)
+            }
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        document.addEventListener("click", onClick);
+
+      return () => {
+        document.removeEventListener("keydown", onKeyDown);
+        document.removeEventListener("click", onClick);
+
+      }
+    }, [open])
+    
+
+        return <CalendarWrapper className="datePicker" ref={datePickerRef}>
+        <label htmlFor='birthday'>{children}</label>
         <Controller
         control={control}
-        // ref={datePickerRef}
         name={'birthday'}
-        render={({ field: { onChange, onBlur, value } }) => (
+        render={({ field: { onChange, onBlur, value } }) => {
 
-        <DatePicker 
+        return <><ReactDatePicker 
         selected={value} 
-        onChange={onChange}
+        onChange={(e) => {
+            onChange(e);
+            handleClose();
+        }}
         onBlur={onBlur}
-        // showIcon
-        shouldCloseOnSelect='true'
         maxDate={new Date()}
         dateFormat="dd/MM/yyyy"
         locale="en-GB"
         customInput={<DateInput/>}
         calendarContainer={MyContainer}
         popperPlacement="bottom-end"
-        // open={open}
-        
-        // increaseMonth={1}
-        renderCustomHeader={(props) => <CustomHeader {...props}/>
-        }
+        open={open}
+        onCalendarOpen={handleOpen}
+        onCalendarClose={handleClose}
+        renderCustomHeader={props => <CustomHeader {...props}/>}
+        closeOnScroll={e => e.target === document}
         />
-         )}
-         />
-    </CalendarLabel>
+        <CalendarButton type='button' onClick={onClick}>
+            <svg width={18} height={18}>
+                <use href={sprite + '#chevron-down'}></use>
+            </svg>
+        </CalendarButton>
+        </>
+        }}
+        />
+        </CalendarWrapper>
 }

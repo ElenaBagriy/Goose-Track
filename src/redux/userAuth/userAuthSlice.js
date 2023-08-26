@@ -102,17 +102,29 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(userGetInfo.rejected, state => {
-        
+        state.isLoading = false;
+        state.error = true;
       })
       // ------------ Update user ----------------
       .addCase(userUpdate.pending, state => {
-
+        state.isLoading = true;
+        state.error = false;
       })
       .addCase(userUpdate.fulfilled, (state, {payload}) => {
+        state.userData.name = payload.name;
+        state.userData.email = payload.email;
+        state.userData.birthday = payload.birthday;
+        state.userData.phone = payload.phone;
+        state.userData.skype = payload.skype;
+        state.userData.image = payload.userImgUrl;
+        state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
+        state.error = false;
         
       })
       .addCase(userUpdate.rejected, state => {
-        
+        state.isLoading = false;
+        state.error = true;
       }),
 });
 
