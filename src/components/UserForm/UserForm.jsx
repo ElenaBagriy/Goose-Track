@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Name, NameWrapper, Form, Role, Label, FormWrapper, FieldsWrapper, StyledField, Button, UserAvatarWrapper, AvatarLabel, HiddenInput, AddButton } from "./UserForm.styled";
-import { selectThemeIsLight, selectUser } from "redux/selectors";
-import avatarLight from '../../images/avatarLight.png';
-import avatarDark from '../../images/avatarDark.png';
-import sprite from '../../images/svg/sprite.svg';
+import { Name, NameWrapper, Form, Role, Label, FormWrapper, FieldsWrapper, StyledField, Button, UserAvatarWrapper, Error } from "./UserForm.styled";
+import { selectUser } from "redux/selectors";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,24 +8,24 @@ import { formatDate } from "shared/services/formatDate";
 import { StyledDatePicker } from "./DatePicker/DatePicker";
 import { userUpdate } from "redux/userAuth/userAuthOperations";
 import { userFormSchema } from "shared/services/validation";
+import { toast } from "react-toastify";
+import { UserAvatar } from "./UserAvatar/UserAvatar";
 
 const startDate = new Date();
 
 export const UserForm = () => {
-    const isLightTheme = useSelector(selectThemeIsLight);
     const userData = useSelector(selectUser);
     const {name, phone, birthday, email, skype, image} = userData;
-    const [userImage, setUserImage] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
+    const [userImage, setUserImage] = useState(image);
     const dispatch = useDispatch();
 
     const { 
         register, 
         handleSubmit, 
-        watch, 
         control, 
         setValue,
-        formState: { errors, isDirty, dirtyFields } 
+        formState: { errors, isDirty } 
     } = useForm({
         resolver: yupResolver(userFormSchema),
         values: {
@@ -47,15 +44,19 @@ export const UserForm = () => {
             setValue('birthday', null)
         };
         
+        const preparedUserImgUrl = data.image === '' ? '' : userImage;
+        const preparedName = data.name.trim();
+        const preparedPhone = data.phone === '' ? null : data.phone.trim();
         const preparedBirthday =
         formatDate(data.birthday) === formatDate(startDate)
         ? null
         : formatDate(data.birthday);
-        const preparedUserImgUrl = data.image === '' ? '' : userImage;
-        const preparedPhone = data.phone === '' ? null : Number(data.phone);
-        const preparedSkype = data.skype === '' ? null : data.skype;
+        const preparedSkype = data.skype === '' ? null : data.skype.trim();
+        const preparedEmail = data.email.trim();
         const preparedData = {
-            ...data,
+            // ...data,
+            name: preparedName,
+            email: preparedEmail,
             phone: preparedPhone,
             skype: preparedSkype,
             birthday: preparedBirthday,
@@ -64,33 +65,29 @@ export const UserForm = () => {
 
         console.log(preparedData);
         dispatch(userUpdate(preparedData))
+        .unwrap()
+        .then((res) =>{
+            toast.success('Your changes have been saved successfully!');
+            setIsDisabled(true);
+        })
+        .catch((error) => {
+            toast.error(`Something went wrong. Please, try again. (${error})`);
+        });
     };
 
     useEffect(() => {
         if (isDirty) {
             setIsDisabled(false)
         }
-
     }, [isDirty])
     
 
-    console.log(errors);
+    // console.log(errors);
 
     return   <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
         <UserAvatarWrapper>
-            <AvatarLabel>
-                <img src={isLightTheme ? avatarLight : avatarDark} alt="avatar"/>
-                <HiddenInput 
-                    name="image" 
-                    type="file"
-                    accept="image/*"
-                />
-                <AddButton type="button">
-                    <svg width={18} height={18}>
-                        <use href={sprite + '#plus'}></use>
-                    </svg>
-                </AddButton>
-            </AvatarLabel>
+            <UserAvatar error={errors.image} image={image} setIsDisabled={setIsDisabled} register={register}
+            userImage={userImage} setUserImage={setUserImage}/>
             <NameWrapper>
                 <Name>Name</Name>
                 <Role>User</Role>
@@ -106,6 +103,7 @@ export const UserForm = () => {
                     {...register('name')}
                       type='text'
                       placeholder= 'Enter your name'/>
+                      {errors.name && <Error role="alert">{errors.name?.message}</Error>}
                 </Label>
                 <Label>
                     Phone
@@ -114,6 +112,7 @@ export const UserForm = () => {
                     type='tel'
                     placeholder="Enter phone" 
                     />
+                    {errors.phone && <Error role="alert">{errors.phone?.message}</Error>}
                 </Label>
                 
                 <StyledDatePicker control={control}>
@@ -127,13 +126,16 @@ export const UserForm = () => {
                     {...register('skype')}
                     type='tel'
                     placeholder="Add a skype number" />
+                    {errors.skype && <Error role="alert">{errors.skype?.message}</Error>}
                 </Label>
                 <Label >
                     Email
                     <StyledField 
                     {...register('email')}
                     placeholder="Enter email" 
-                    type="email" />
+                    // type="email" 
+                    />
+                    {errors.email && <Error role="alert">{errors.email?.message}</Error>}
                 </Label>
                 </FieldsWrapper>
                 <Button type="submit" disabled={isDisabled}>

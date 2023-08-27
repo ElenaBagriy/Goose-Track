@@ -5,14 +5,13 @@ export const nameRegExp = new RegExp(
     );
   
 export const passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  
-export const phoneRegExp =
-/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
+
+export const phoneRegExp = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/;
 
 export const SignupSchema = Yup.object().shape({
     name: Yup.string()
     .min(2, 'Name is too Short!')
-    .max(18, 'Name may contain only 18 characters.')
+    .max(16, 'Name may contain only 16 characters.')
     .matches(nameRegExp,"Name may contain only letters, apostrophe, dash and spaces.")
     .required('Name is required'),
     email: Yup.string('Enter your email').email('Enter a valid email').required('Email is required.'),
@@ -38,26 +37,29 @@ export const LoginSchema = Yup.object().shape({
 
 export const userFormSchema = Yup.object().shape({
     name: Yup.string()
-      .required('This field is required')
-      .matches(
-        nameRegExp,
-        "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-      )
-      .max(16, 'Name may contain only 16 characters'),
+      .required('Name is required.')
+      .matches(nameRegExp, "Name may contain only letters, apostrophe, dash and spaces.")
+      .min(2, 'Name is too Short!')
+      .max(16, 'Name may contain only 16 characters.'),
     phone: Yup.string().matches(phoneRegExp, {
       message:
         'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
       excludeEmptyString: true,
     }),
     birthday: Yup.date('Invalid date format'),
-    skype: Yup.string().max(16, 'Skype may contain only 16 characters'),
+    skype: Yup.string()
+      .max(16, 'Skype may contain only 16 characters'),
     email: Yup.string()
-      .email('Enter a valid email')
+      .email('Enter a valid email.')
       .required('Email is required.'),
     image: Yup.mixed().nullable('nullable')
-    .test('is-valid-type', 'Invalid image type', value => {
-      return value === '' || isValidFileType(value);
-    }),
+      .test('is-valid-type', 'Invalid image type', value => {
+        return value === '' || isValidFileType(value)})
+        .test(
+          'is-big-file',
+          'File is too big.',
+          value => {checkIfFilesAreTooBig(value)}
+        )
   });
 
   const validFileExtensions = {
@@ -73,3 +75,14 @@ export const userFormSchema = Yup.object().shape({
       return validFileExtensions['image'].indexOf(fileName.split('.').pop()) > -1;
     }
   };
+
+  const checkIfFilesAreTooBig = (file) => {
+    let valid = true
+    if (file) {
+        const size = file.size / 1024 / 1024
+        if (size > 10) {
+          valid = false
+        }
+      }
+    return valid
+  }
