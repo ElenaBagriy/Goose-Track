@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoose_track=self.webpackChunkgoose_track||[]).push([[620],{1794:function(e,n,t){t.r(n);var u=t(184);n.default=function(){return(0,u.jsx)("div",{children:"NotFoundPage"})}}}]);
+//# sourceMappingURL=620.6648e4ec.chunk.js.map

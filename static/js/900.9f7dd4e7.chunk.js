@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgoose_track=self.webpackChunkgoose_track||[]).push([[900],{2093:function(r,n,e){e.r(n),e.d(n,{UserForm:function(){return s}});var t=e(184),s=function(){return(0,t.jsx)("div",{children:"UserForm"})}},8900:function(r,n,e){e.r(n);var t=e(184),s=e(2093).UserForm;n.default=function(){return(0,t.jsx)(t.Fragment,{children:(0,t.jsx)(s,{})})}}}]);
-//# sourceMappingURL=900.9f7dd4e7.chunk.js.map
