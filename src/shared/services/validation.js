@@ -57,8 +57,8 @@ export const userFormSchema = Yup.object().shape({
         return value === '' || isValidFileType(value)})
         .test(
           'is-big-file',
-          'File is too big.',
-          value => {checkIfFilesAreTooBig(value)}
+          'File is too big. Max.size = 70KB',
+          value => checkIfFilesAreTooBig(value)
         )
   });
 
@@ -77,11 +77,12 @@ export const userFormSchema = Yup.object().shape({
   };
 
   const checkIfFilesAreTooBig = (file) => {
-    let valid = true
+    let valid = true;
+
     if (file) {
-        const size = file.size / 1024 / 1024
-        if (size > 10) {
-          valid = false
+        const size = file[0].size / 1024
+        if (size > 70) {
+          valid = false;
         }
       }
     return valid

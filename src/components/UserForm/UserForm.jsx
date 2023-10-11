@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Name, NameWrapper, Form, Role, Label, FormWrapper, FieldsWrapper, StyledField, Button, UserAvatarWrapper, Error } from "./UserForm.styled";
 import { selectUser } from "redux/selectors";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { formatDate } from "shared/services/formatDate";
 import { StyledDatePicker } from "./DatePicker/DatePicker";
@@ -19,6 +19,8 @@ export const UserForm = () => {
     const [isDisabled, setIsDisabled] = useState(true);
     const [userImage, setUserImage] = useState(image);
     const dispatch = useDispatch();
+
+    const input = useRef();
 
     const { 
         register, 
@@ -79,14 +81,20 @@ export const UserForm = () => {
         if (isDirty) {
             setIsDisabled(false)
         }
-    }, [isDirty])
+    }, [isDirty]);
+
+    useEffect(() => {
+        if (image) {
+            setUserImage(image)
+        }
+    }, [image])
     
 
     // console.log(errors);
 
     return   <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
         <UserAvatarWrapper>
-            <UserAvatar error={errors.image} image={image} setIsDisabled={setIsDisabled} register={register}
+            <UserAvatar error={errors.image} setIsDisabled={setIsDisabled} register={register} ref={input}
             userImage={userImage} setUserImage={setUserImage}/>
             <NameWrapper>
                 <Name>Name</Name>

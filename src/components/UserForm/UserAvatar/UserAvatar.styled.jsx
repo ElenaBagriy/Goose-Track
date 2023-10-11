@@ -8,8 +8,8 @@ const rotate =  keyframes`
         transform: rotate(0);
     }
     100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
     }
 `;
 
@@ -32,12 +32,11 @@ export const AvatarLabel = styled.label`
     &:focus {
         border-color: ${props => props.theme.button.hover};
 
-        & div.add-button {
+        & button.MuiSpeedDial-fab {
             background-color: ${props => props.theme.button.hover};
-            box-shadow: ${props => props.theme.button.boxShadow};
         }
 
-        & svg {
+        & svg.addIcon {
             animation: ${rotate} 0.6s ease-in-out both;
         }
     }
@@ -95,6 +94,7 @@ export const AddButton = styled.div`
 `;
 
 export const HiddenInput = styled.input`
+    z-index: 300000;
     position: absolute;
     top: 0;
     left: 0;
@@ -107,9 +107,9 @@ export const HiddenInput = styled.input`
 
 export const Error = styled.span`
     position: absolute;
-    width: auto;
+    width: 100%;
     color: ${props => props.theme.colors.error};
-    bottom: 50%;
+    bottom: 20%;
     left: calc(100% + 10px);
     transform: translateY(50%);
     font-family: Inter;
@@ -118,6 +118,7 @@ export const Error = styled.span`
     line-height: 1.17;
 
     @media screen and (min-width: 768px) {
+        bottom: 50%;
         font-size: 12px;
     }
 `;
@@ -133,7 +134,7 @@ export const AvatarImage = styled.img`
 export const CoverImage = styled.img`
     width: 28px;
     height: 28px;
-  object-fit: fill;
+    object-fit: fill;
 
 
     @media screen and (min-width: 768px) {
