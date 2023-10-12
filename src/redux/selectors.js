@@ -9,3 +9,7 @@ export const selectReviews = state => state.reviews.reviews;
 
 export const selectThemeIsLight = (state) => state.theme.value === "light";
 export const selectTheme = (state) => state.theme.value;
+
+// tasks
+
+export const selectTasks = (state) => state.tasks.tasksList;

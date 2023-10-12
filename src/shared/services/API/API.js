@@ -55,8 +55,8 @@ export const UserAPI = {
   //=============Task==============================
 
   export const TasksAPI = {
-  getTasksList: async credentials => {
-    const {data} = await axios.get('/task/by-month', credentials); 
+  getTasksList: async () => {
+    const {data} = await axios.get('/task/by-month'); 
     return data;
   },
 
