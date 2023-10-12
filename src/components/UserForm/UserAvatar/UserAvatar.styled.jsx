@@ -94,7 +94,7 @@ export const AddButton = styled.div`
 `;
 
 export const HiddenInput = styled.input`
-    z-index: 300000;
+    /* z-index: 300000; */
     position: absolute;
     top: 0;
     left: 0;

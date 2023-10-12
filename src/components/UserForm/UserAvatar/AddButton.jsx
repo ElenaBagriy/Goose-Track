@@ -1,20 +1,27 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UploadIcon from '@mui/icons-material/Upload';
 import sprite from '../../../images/svg/sprite.svg';
-import { ButtonWrapper, StyledSpeedDial } from './AddButton.styled';
+import { StyledSpeedDial } from './AddButton.styled';
+import { useState } from 'react';
 
+export const SpeedDial = ({onAddImage, onDelete, userImage}) => {
 
-const actions = [
-    { icon: <UploadIcon />, name: 'Upload' },
-    { icon: <DeleteIcon />, name: 'Delete' },
-  ];
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    if (userImage){
+    setOpen(true)}
+    return;
+  };
+  const handleClose = () => setOpen(false);
 
-export const PlaygroundSpeedDial = (onChange) => {
+  
+  const onClick = () => {
+    if (!userImage) {
+      onAddImage()
+    }
+  };
 
   return (
         <StyledSpeedDial
@@ -23,15 +30,27 @@ export const PlaygroundSpeedDial = (onChange) => {
             <use href={sprite + '#plus'}></use>
             </svg>}
           direction='right'
+          onClick={onClick}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          open={open}
         >
-          {actions.map((action) => (
             <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
-              // onClick={onChange}
+              icon={<UploadIcon />}
+              tooltipTitle='Upload'
+              onClick={() => {
+                onAddImage();
+                handleClose();
+              }}
             />
-          ))}
+            <SpeedDialAction
+              icon={<DeleteIcon />}
+              tooltipTitle='Delete'
+              onClick={() => {
+                onDelete();
+                handleClose();
+              }}
+            />
         </StyledSpeedDial>
   );
 }

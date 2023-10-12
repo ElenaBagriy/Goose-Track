@@ -1,39 +1,39 @@
 import { useSelector } from "react-redux";
-import { AddButton, AvatarImage, AvatarLabel, CoverImage, Error, HiddenInput, ImageWrapper } from "./UserAvatar.styled"
+import { AvatarImage, AvatarLabel, CoverImage, Error, HiddenInput, ImageWrapper } from "./UserAvatar.styled"
 import { selectThemeIsLight } from "redux/selectors";
 import avatarLight from '../../../images/avatarLight.png';
 import avatarDark from '../../../images/avatarDark.png';
-import sprite from '../../../images/svg/sprite.svg';
 import { setFileUrl } from "shared/services/setFileUrl";
-import {PlaygroundSpeedDial} from "./AddButton";
-import React, { useEffect, useRef } from "react";
-import { ref } from "yup";
+import {SpeedDial} from "./AddButton";
+import React, { useRef } from "react";
 
-const Select = React.forwardRef(({ onChange, onBlur, name, label }, ref) => (
-    <>
-      <label>{label}</label>
-      <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
-        <option value="20">20</option>
-        <option value="30">30</option>
-      </select>
-    </>
-  ));
 
-export const UserAvatar = React.forwardRef(({error, setIsDisabled, userImage, setUserImage, register}, ref) => {
+export const UserAvatar = React.forwardRef(({error, setIsDisabled, userImage, setUserImage, register}, refer) => {
     const isLightTheme = useSelector(selectThemeIsLight);
-    const input = useRef(ref);
-    
-
+    const input = useRef(null);
+    const {ref, ...rest} = register('image');
 
     const onChange = (e) => {
-        console.log('Click');
+        if (!e) {
+            input.current.value = '';
+            setFileUrl(null, setUserImage);
+            setIsDisabled(false);
+            return;
+        };
         const file = e.target.files[0]
         setFileUrl(file, setUserImage);
         setIsDisabled(false);
     };
 
     const onClick = () => {
-        // console.log(ref);
+        input.current.focus();
+        input.current.click();
+    };
+
+    const onDelete = () => {
+        setUserImage('')
+        input.current.blur();
+        onChange('')
     }
 
 
@@ -42,26 +42,17 @@ export const UserAvatar = React.forwardRef(({error, setIsDisabled, userImage, se
             {!userImage ? <CoverImage src={isLightTheme ? avatarLight : avatarDark} alt="avatar"/> :
             <AvatarImage src={userImage} alt="avatar"/>}
         </ImageWrapper>
-
-
-        <HiddenInput ref={ref}
-        {...register('image', {
-            onChange: onChange,
-            onBlur: (e) => {console.log(input.current);},
-          })}
+        <HiddenInput 
+        {...rest}
+        onChange= {onChange}
+        ref={(e) => {
+            ref(e)
+            input.current = e;
+          }}
         type="file"
         accept="image/*"
         />
-
-
-        {/* <AddButton type="button" className="add-button">
-            <svg width={18} height={18}>
-                <use href={sprite + '#plus'}></use>
-            </svg>
-        </AddButton> */}
-        <PlaygroundSpeedDial onChange={onChange}/>
-        {/* <p onClick={onClick} ref={input}>sfsfsff</p> */}
-        
+        <SpeedDial onAddImage={onClick} onDelete={onDelete} userImage={userImage}/>
         {error && <Error role="alert">{error?.message}</Error>}
         </AvatarLabel>
 })

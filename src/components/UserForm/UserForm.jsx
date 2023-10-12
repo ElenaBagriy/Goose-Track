@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Name, NameWrapper, Form, Role, Label, FormWrapper, FieldsWrapper, StyledField, Button, UserAvatarWrapper, Error } from "./UserForm.styled";
 import { selectUser } from "redux/selectors";
 import { useForm } from "react-hook-form";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { formatDate } from "shared/services/formatDate";
 import { StyledDatePicker } from "./DatePicker/DatePicker";
@@ -20,7 +20,6 @@ export const UserForm = () => {
     const [userImage, setUserImage] = useState(image);
     const dispatch = useDispatch();
 
-    const input = useRef();
 
     const { 
         register, 
@@ -56,7 +55,6 @@ export const UserForm = () => {
         const preparedSkype = data.skype === '' ? null : data.skype.trim();
         const preparedEmail = data.email.trim();
         const preparedData = {
-            // ...data,
             name: preparedName,
             email: preparedEmail,
             phone: preparedPhone,
@@ -65,7 +63,6 @@ export const UserForm = () => {
             userImgUrl: preparedUserImgUrl,
         };
 
-        console.log(preparedData);
         dispatch(userUpdate(preparedData))
         .unwrap()
         .then((res) =>{
@@ -80,28 +77,27 @@ export const UserForm = () => {
     useEffect(() => {
         if (isDirty) {
             setIsDisabled(false)
+        };
+        if (userImage === '') {
+            setIsDisabled(false)
         }
-    }, [isDirty]);
+    }, [isDirty, userImage]);
 
     useEffect(() => {
         if (image) {
             setUserImage(image)
         }
     }, [image])
-    
-
-    // console.log(errors);
 
     return   <Form onSubmit={handleSubmit(onSubmit)} autoComplete="false">
         <UserAvatarWrapper>
-            <UserAvatar error={errors.image} setIsDisabled={setIsDisabled} register={register} ref={input}
+            <UserAvatar error={errors.image} setIsDisabled={setIsDisabled} register={register}
             userImage={userImage} setUserImage={setUserImage}/>
             <NameWrapper>
                 <Name>Name</Name>
                 <Role>User</Role>
             </NameWrapper>
         </UserAvatarWrapper>
-    
         
         <FormWrapper>
             <FieldsWrapper>
@@ -126,7 +122,6 @@ export const UserForm = () => {
                 <StyledDatePicker control={control}>
                     Birthday
                  </StyledDatePicker>
-
 
                 <Label>
                     Skype

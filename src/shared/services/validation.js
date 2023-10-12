@@ -79,7 +79,7 @@ export const userFormSchema = Yup.object().shape({
   const checkIfFilesAreTooBig = (file) => {
     let valid = true;
 
-    if (file) {
+    if (file.length > 0) {
         const size = file[0].size / 1024
         if (size > 70) {
           valid = false;

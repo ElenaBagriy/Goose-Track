@@ -66,7 +66,6 @@ export const userUpdate = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await UserAPI.updateUser(data);
-      console.log(response);
       return response;
     } catch ({response}) {
       return thunkAPI.rejectWithValue(response.data.message);
