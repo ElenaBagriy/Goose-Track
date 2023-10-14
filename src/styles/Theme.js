@@ -21,6 +21,11 @@ const setTheme = isLight => {
       avatarBg: `${isLight ? '#F8F8F8' : '#171820'}`,
     },
 
+    tablet: {
+      unactive: `${isLight ? '#E3F3FF' : '#21222C'}`,
+      divider: `${isLight ? 'rgba(62, 133, 243, 0.20)' : 'rgba(255, 255, 255, 0.15)'}`,
+    },
+
     text: {
       header: `${isLight ? '#343434' : '#ffffff'}`,
       logo: `${isLight ? '#3E85F3' : '#E3F3FF'}`,

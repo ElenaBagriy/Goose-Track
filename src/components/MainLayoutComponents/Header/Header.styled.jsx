@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
 export const TitleWithMotivationWrapper = styled.div`
   display: flex;
   gap: 8px;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
 `;
 
 export const MotivationWrapper = styled.div`
