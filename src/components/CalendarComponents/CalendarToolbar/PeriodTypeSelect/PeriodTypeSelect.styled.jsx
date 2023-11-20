@@ -11,7 +11,7 @@ export const DayButton = styled(NavLink)`
     justify-content: center;
     width: 76px;
     height: 34px;
-    color: ${props => props.theme.colors.mainBlue};
+    color: ${props => props.isactive ? props.theme.text.activeLink : props.theme.colors.mainBlue};
     text-align: center;
     font-family: Inter;
     font-size: 14px;
@@ -19,8 +19,14 @@ export const DayButton = styled(NavLink)`
     font-weight: 500;
     line-height: 1.29; 
     border-radius: 0px 8px 8px 0px;
-    background-color: ${props => props.theme.tablet.unactive};
-    
+    background-color: ${props => props.isactive ? props.theme.tablet.active : props.theme.tablet.unactive};
+    transition: box-shadow ${props => props.theme.hover.transition};
+
+    &:focus, 
+    &:hover{
+        box-shadow: ${props => props.theme.button.boxShadow};
+    }
+
     @media screen and (min-width: 768px) {
         width: 82px;
         font-size: 16px;
@@ -34,7 +40,7 @@ export const MonthButton = styled(NavLink)`
     justify-content: center;
     width: 76px;
     height: 34px;
-    color: ${props => props.theme.colors.mainBlue};
+    color: ${props => props.isactive ? props.theme.text.activeLink : props.theme.colors.mainBlue};
     text-align: center;
     font-family: Inter;
     font-size: 14px;
@@ -43,7 +49,13 @@ export const MonthButton = styled(NavLink)`
     line-height: 1.29; 
     border-radius: 8px 0px 0px 8px;
     border-right: 1px solid ${props => props.theme.tablet.divider};
-    background-color: ${props => props.theme.tablet.unactive};
+    background-color: ${props => props.isactive ? props.theme.tablet.active : props.theme.tablet.unactive};
+    transition: box-shadow ${props => props.theme.hover.transition};
+
+    &:focus, 
+    &:hover{
+        box-shadow: ${props => props.theme.button.boxShadow};
+    }
 
     @media screen and (min-width: 768px) {
         width: 82px;

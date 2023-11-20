@@ -14,20 +14,20 @@ export const Header = ({isOpen, handleOpen, handleClose}) => {
     const isMobile = useMediaQuery('(max-width: 1399px)');
     const tasks = useSelector(selectTasks);
 
-    console.log(tasks);
-
-
     let title = '';
 
-    if (pathname !== '/account') {
+    if (pathname === '/statistics') {
         title = onCapitalise(pathname.slice(1, pathname.length));
-    } else {
+    } else if (pathname === '/account') {
         title = 'User Profile'
+    }
+    else {
+        title = 'Calendar'
     };
 
     return <HeaderStyled>
         {isMobile && <BurgerMenu isOpen={isOpen} handleOpen={handleOpen} handleClose={handleClose}/> }
-        {tasks && title === 'Calendar' ? 
+        {!isMobile && tasks && title === 'Calendar' ? 
         <TitleWithMotivationWrapper>
             <Goose/>
             <MotivationWrapper>

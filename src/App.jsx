@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { registerLocale } from 'react-datepicker';
 import enGB from "date-fns/locale/en-GB";
 
-
 const StartPage = lazy(() => import('pages/StartPage/StartPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -14,10 +13,11 @@ const SharedLayout = lazy(() => import("./components/SharedLayout/SharedLayout")
 const MainLayout = lazy(() => import("./pages/MainLayout/MainLayout"));
 const AccountPage = lazy(() => import("./pages/AccountPage/AccountPage"));
 const CalendarPage = lazy(() => import("./pages/CalendarPage/CalendarPage"));
+const CalendarIndex = lazy(() => import("./components/CalendarComponents/CalendarToolbar/CalendarIndex/CalendarIndex"));
 const StatisticsPage = lazy(() => import("./pages/StatisticsPage/StatisticsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-
-
+const ChoosedMonth = lazy(() => import("./components/ChoosedMonth/ChoosedMonth"));
+const ChoosedDay = lazy(() => import("./components/ChoosedDay/ChoosedDay"));
 
 
 export const App = () => {
@@ -42,8 +42,9 @@ export const App = () => {
           <Route element={<MainLayout />}>
             <Route path="account" element={<AccountPage />} />
             <Route path="calendar" element={<CalendarPage />}>
-              {/* <Route path="month/:currentMonth" element={<ChosenMonth />} />
-              <Route path="day/:currentDay" element={<ChosenDay />} /> */}
+              <Route index element={<CalendarIndex />} />
+              <Route path="month/:currentMonth" element={<ChoosedMonth />} />
+              <Route path="day/:currentDay" element={<ChoosedDay />} />
             </Route>
             <Route path="statistics" element={<StatisticsPage />} />
           </Route>

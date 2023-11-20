@@ -6,7 +6,6 @@ export const getTasksList = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await TasksAPI.getTasksList(data);
-      console.log(response);
       return response;
     } catch ({response}) {
       return thunkAPI.rejectWithValue(response.data.message);

@@ -3,7 +3,7 @@ import { Controller } from "react-hook-form";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarButton, CalendarWrapper, DateInput, DecreaseButton, IncreaseButton, Month, StyledCalendarContainer, Year } from "./DatePicker.styled";
-import sprite from '../../../images/svg/sprite.svg'
+import sprite from '../../../images/svg/sprite.svg';
 import { useEffect, useRef, useState } from "react";
 
 

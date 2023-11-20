@@ -4,7 +4,7 @@ import { selectUser } from "redux/selectors";
 import { useForm } from "react-hook-form";
 import React, { useEffect, useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { formatDate } from "shared/services/formatDate";
+import { formatBirthDate } from "shared/services/formatBirthDate";
 import { StyledDatePicker } from "./DatePicker/DatePicker";
 import { userUpdate } from "redux/userAuth/userAuthOperations";
 import { userFormSchema } from "shared/services/validation";
@@ -49,9 +49,9 @@ export const UserForm = () => {
         const preparedName = data.name.trim();
         const preparedPhone = data.phone === '' ? null : data.phone.trim();
         const preparedBirthday =
-        formatDate(data.birthday) === formatDate(startDate)
+        formatBirthDate(data.birthday) === formatBirthDate(startDate)
         ? null
-        : formatDate(data.birthday);
+        : formatBirthDate(data.birthday);
         const preparedSkype = data.skype === '' ? null : data.skype.trim();
         const preparedEmail = data.email.trim();
         const preparedData = {

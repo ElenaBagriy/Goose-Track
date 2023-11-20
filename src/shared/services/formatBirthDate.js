@@ -1,4 +1,4 @@
-export const formatDate = date => {
+export const formatBirthDate = date => {
     if (typeof date === 'string') return date;
     const y = date.getFullYear();
     const m = date.getMonth();

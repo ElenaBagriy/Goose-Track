@@ -23,6 +23,7 @@ const setTheme = isLight => {
 
     tablet: {
       unactive: `${isLight ? '#E3F3FF' : '#21222C'}`,
+      active: `${isLight ? '#CAE8FF' : '#3E85F3'}`,
       divider: `${isLight ? 'rgba(62, 133, 243, 0.20)' : 'rgba(255, 255, 255, 0.15)'}`,
     },
 
@@ -42,6 +43,7 @@ const setTheme = isLight => {
       boxShadow: `4px 2px 16px 0px rgba(136, 165, 191, 0.48)`,
       text: `${isLight ? '#fafafa' : '#8BAA36'}`,
       disabled: `${isLight ? 'rgba(0, 0, 0, 0.26)' : 'rgba(0, 0, 0, 0.12)'}`,
+      border: `${isLight ? 'rgba(220, 227, 229, 0.50)' : 'rgba(255, 255, 255, 0.15)'}`,
     },
 
     hover: {
