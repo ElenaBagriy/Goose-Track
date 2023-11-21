@@ -19,6 +19,7 @@ const setTheme = isLight => {
       page: `${isLight ? '#ffffff' : '#21222C'}`,
       inputBorder: `${isLight ? 'rgba(17, 17, 17, 0.10)' : 'rgba(255, 255, 255, 0.15)'}`,
       avatarBg: `${isLight ? '#F8F8F8' : '#171820'}`,
+      weekDays: `${isLight ? '#ffffff' : '#22232D'}`
     },
 
     tablet: {

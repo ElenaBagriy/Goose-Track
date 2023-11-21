@@ -63,10 +63,9 @@ export const DecreaseButton = styled.button`
 
     &:hover,
     &:focus {
-        background-color: ${props => props.theme.colors.mainBlue};
         box-shadow: ${props => props.theme.button.boxShadow};
         & svg {
-            stroke: ${props => props.theme.colors.white};
+            /* stroke: ${props => props.theme.colors.white}; */
         }
     }
 
@@ -104,10 +103,10 @@ export const IncreaseButton = styled.button`
 
     &:hover,
     &:focus {
-        background-color: ${props => props.theme.colors.mainBlue};
+        /* background-color: ${props => props.theme.colors.mainBlue}; */
         box-shadow: ${props => props.theme.button.boxShadow};
         & svg {
-            stroke: ${props => props.theme.colors.white};
+            /* stroke: ${props => props.theme.colors.white}; */
         }
     }
 
