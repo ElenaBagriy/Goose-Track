@@ -8,6 +8,7 @@ import { Logo } from "./Logo/Logo";
 
 export const SideBar = React.forwardRef(function({handleClose}, ref) {
     const isMobile = useMediaQuery('(max-width: 1279px)');
+    
     return <Section ref={ref}>
         <div>
             <LogoWrapper>

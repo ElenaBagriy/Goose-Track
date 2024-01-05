@@ -6,10 +6,10 @@ import { getTasksList } from "redux/tasks/tasksOperations";
 
 const CalendarPage = () => {
     const dispatch = useDispatch();
-    const { currentDay, currentMonth } = useParams();
+    // const { currentDay, currentMonth } = useParams();
 
-    console.log('currentDay', currentDay);
-    console.log('currentMonth', currentMonth);
+    // console.log('currentDay', currentDay);
+    // console.log('currentMonth', currentMonth);
 
     useEffect(() => {
         dispatch(getTasksList())

@@ -3,7 +3,8 @@ import sprite from '../../../../images/svg/sprite.svg';
 import { format } from 'date-fns';
 
 export const PeriodPaginator = ({type, date, changeDate}) => {
-    
+
+
     const formatMonth = (type, date) => {
         const newDate =
         type === 'month' ? format(date, 'MMMM') : format(date, 'dd MMMM');

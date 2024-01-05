@@ -2,11 +2,10 @@ import { useParams } from "react-router-dom";
 import { DayButton, MonthButton, TypeNav } from "./PeriodTypeSelect.styled";
 import { formatURLDate } from "shared/services/formatURLDate";
 
-export const PeriodTypeSelect = ({onChangeType}) => {
+export const PeriodTypeSelect = ({onChangeType, date}) => {
     const { currentDay, currentMonth } = useParams();
 
     const setDateURL = (type) => {
-        const date = new Date();
         const newDate = formatURLDate(type, date);
         return `${type}/${newDate}`;
     };
