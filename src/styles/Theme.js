@@ -47,6 +47,10 @@ const setTheme = isLight => {
       border: `${isLight ? 'rgba(220, 227, 229, 0.50)' : 'rgba(255, 255, 255, 0.15)'}`,
     },
 
+    table: {
+      border: `${isLight ? 'rgba(220, 227, 229, 0.80)' : 'rgba(255, 255, 255, 0.15)'}`,
+    },
+
     hover: {
       transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
       linkBg: `${isLight ? '#E3F3FF' : 'transparent'}`,

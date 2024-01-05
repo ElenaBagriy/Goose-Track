@@ -1,6 +1,7 @@
-import { eachDayOfInterval, getDaysInMonth } from 'date-fns';
+import { eachDayOfInterval, getDate, getDaysInMonth } from 'date-fns';
 import { endOfMonth, getDay, startOfMonth } from 'date-fns';
 import { format } from 'date-fns';
+import { Row, Table } from './CalendarTable.styled';
 
 const CalendarTable = ({currentDate}) => {
     
@@ -23,16 +24,7 @@ const CalendarTable = ({currentDate}) => {
 
       const tasks = [];
 
-      const { startMonth, endMonth, firstDayOfMonth, daysOfMonth, daysAmmount } = useDaysOfMonth(currentDate);
-
-        console.log("startMonth", startMonth);   //дата с днем недели
-        console.log("endMonth", endMonth);   //дата с днем недели
-        console.log("firstDayOfMonth", firstDayOfMonth);   //номер дня недели (0 - воскресенье)
-        console.log("daysOfMonth", daysOfMonth);    //список всех дней в массиве
-        console.log("daysAmmount", daysAmmount);    //количество дней в месяце
-
-        // нам нужно сделать строки и ячейки в строках
-        // 
+      const { firstDayOfMonth, daysOfMonth } = useDaysOfMonth(currentDate);
 
       const daysWithTasks = daysOfMonth.map(day => ({
           date: format(day, 'yyyy-MM-dd'),
@@ -40,39 +32,47 @@ const CalendarTable = ({currentDate}) => {
         }));
 
       const emptyCells = (firstDayOfMonth) => {
-        return Array.from({ length: firstDayOfMonth }, (_, index) => (
+        let length = firstDayOfMonth;
+        if (firstDayOfMonth === 0) {
+            length = 7;
+        }
+        return Array.from({ length: length-1 }, (_, index) => (
            <td key={`empty-${index}`}></td>
         ));
       }
 
-
       const rows = [];
       let cells = emptyCells(firstDayOfMonth);
 
+      
       daysWithTasks.forEach((day, index) => {
         
         cells.push(
           <td
             key={index}
-          >{day.date} </td>
+          >{getDate(new Date(day.date))} </td>
         );
-    
+        
         if (cells.length === 7 || index === daysWithTasks.length - 1) {
-          rows.push(cells);
-          cells = [];
+            rows.push(cells);
+            cells = [];
         }
-      });
+    });
+    
+    if (rows[rows.length-1].length !==7) {
+        const length = 7 - rows[rows.length-1].length;
+        const lastCells = [...Array(length)].map((_, index) => {
+            return <td key={`empty-${index}`}></td>;
+          });
+        rows[rows.length-1].push(...lastCells)
+    }
 
-
-
-    return <div>
-        <table>
+    return <Table>
             <tbody>{rows.map((row, index) => {
-                return <tr key={index}>{row}</tr>
+                return <Row key={index}>{row}</Row>
             })}
             </tbody>
-        </table>
-    </div>
+        </Table>
 };
 
 export default CalendarTable;
