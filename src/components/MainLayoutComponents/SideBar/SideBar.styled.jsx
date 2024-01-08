@@ -5,7 +5,7 @@ export const Section = styled.div`
     flex-direction: column;
     justify-content: space-between;
     background-color: ${props => props.theme.colors.sidebar};
-    width: 225px;
+    max-width: 225px;
     min-height: 100vh;
     padding: 24px 20px;
 

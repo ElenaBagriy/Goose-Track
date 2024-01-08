@@ -41,7 +41,6 @@ export const CalendarToolbar = () => {
         
     const [type, setType] = useState(periodType);
     const [date, setDate] = useState(dateObject);
-    
 
     const onDateChange = (number) => {
         let result;
@@ -49,6 +48,7 @@ export const CalendarToolbar = () => {
             result = add(date, {
                 months: +number,
             })
+
             setDate(result);      
         };
 

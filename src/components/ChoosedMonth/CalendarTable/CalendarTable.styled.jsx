@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-export const Table = styled.table`
+export const TableWrapper = styled.div`
     margin-top: 14px;
     border: 1px solid ${props => props.theme.table.border};
     border-radius: 8px;
-    border-collapse: separate;
+`;
+
+export const Table = styled.table`
+    border-radius: 8px;
+    border-collapse: collapse;
+    /* border-style: hidden; */
+    table-layout: fixed;
     background-color: ${props => props.theme.colors.page};
     width: 100%;
     color: #343434;
@@ -22,6 +28,14 @@ export const Table = styled.table`
     margin-top: 15px;
   }
 
+
+    tr:last-child td{
+        border-bottom: none;
+    } 
+
+    tr td:last-child {
+        border-right: none;
+    }
 `;
 
 export const Row = styled.tr`
@@ -34,4 +48,5 @@ export const Row = styled.tr`
     @media screen and (min-width: 1440px) {
         height: 125px;
     }
+
 `

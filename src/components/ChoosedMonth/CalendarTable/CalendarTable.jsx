@@ -1,7 +1,8 @@
-import { eachDayOfInterval, getDate, getDaysInMonth } from 'date-fns';
+import { eachDayOfInterval, getDaysInMonth } from 'date-fns';
 import { endOfMonth, getDay, startOfMonth } from 'date-fns';
 import { format } from 'date-fns';
-import { Row, Table } from './CalendarTable.styled';
+import { Row, Table, TableWrapper } from './CalendarTable.styled';
+import { CalendarCell } from './CalendarCell/CalendarCell';
 
 const CalendarTable = ({currentDate}) => {
     
@@ -22,7 +23,43 @@ const CalendarTable = ({currentDate}) => {
         };
       };
 
-      const tasks = [];
+      const tasks = [{
+        "_id": "64303c8582dc6fccdee4f8df",
+        "title": "toDsdvsddsvsdcvsdvdsvsdvo",
+        "start": "9-00",
+        "end": "14-00",
+        "priority": "medium",
+        "category": "to-do",
+        "owner": "64303c5f82dc6fccdee4f8dc",
+        "date": "2024-01-08",
+        "createdAt": "2024-01-08T15:53:41.088Z",
+        "updatedAt": "2024-01-08T15:53:41.088Z",
+        "__v": 0
+      }, {
+        "_id": "64303c8582dc6fccdef",
+        "title": "sdsdsdsd",
+        "start": "9-00",
+        "end": "14-00",
+        "priority": "medium",
+        "category": "to-do",
+        "owner": "64303c5f82dc6fccdee4f8dc",
+        "date": "2024-01-08",
+        "createdAt": "2024-01-08T15:53:41.088Z",
+        "updatedAt": "2024-01-08T15:53:41.088Z",
+        "__v": 0
+      }, {
+        "_id": "64303c85fccdef",
+        "title": "111q1q1q1q",
+        "start": "9-00",
+        "end": "14-00",
+        "priority": "medium",
+        "category": "to-do",
+        "owner": "64303c5f82dc6fccdee4f8dc",
+        "date": "2024-01-08",
+        "createdAt": "2024-01-08T15:53:41.088Z",
+        "updatedAt": "2024-01-08T15:53:41.088Z",
+        "__v": 0
+      }];
 
       const { firstDayOfMonth, daysOfMonth } = useDaysOfMonth(currentDate);
 
@@ -37,7 +74,7 @@ const CalendarTable = ({currentDate}) => {
             length = 7;
         }
         return Array.from({ length: length-1 }, (_, index) => (
-           <td key={`empty-${index}`}></td>
+           <CalendarCell index={index} key={`first-empty-${index}`}/>
         ));
       }
 
@@ -48,9 +85,7 @@ const CalendarTable = ({currentDate}) => {
       daysWithTasks.forEach((day, index) => {
         
         cells.push(
-          <td
-            key={index}
-          >{getDate(new Date(day.date))} </td>
+            <CalendarCell day={day} index={index} key={index}/>
         );
         
         if (cells.length === 7 || index === daysWithTasks.length - 1) {
@@ -62,17 +97,19 @@ const CalendarTable = ({currentDate}) => {
     if (rows[rows.length-1].length !==7) {
         const length = 7 - rows[rows.length-1].length;
         const lastCells = [...Array(length)].map((_, index) => {
-            return <td key={`empty-${index}`}></td>;
+            return <CalendarCell index={index} key={`last-empty-${index}`}/>;
           });
         rows[rows.length-1].push(...lastCells)
     }
 
-    return <Table>
+    return <TableWrapper>
+        <Table>
             <tbody>{rows.map((row, index) => {
                 return <Row key={index}>{row}</Row>
             })}
             </tbody>
         </Table>
+        </TableWrapper>
 };
 
 export default CalendarTable;

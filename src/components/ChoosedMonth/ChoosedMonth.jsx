@@ -8,7 +8,7 @@ const ChoosedMonth = () => {
 
     return <div>
     <MonthCalendarHead></MonthCalendarHead>
-    <CalendarTable currentDate={currentMonth} ></CalendarTable>
+    <CalendarTable currentDate={currentMonth} />
     </div>
 };
 

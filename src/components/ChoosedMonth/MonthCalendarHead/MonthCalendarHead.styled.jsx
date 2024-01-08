@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const List = styled.ul`
     display: flex;
     justify-content: space-around;
-    width: 335px;
+    max-width: 335px;
     border-radius: 8px;
     border: 1px solid ${props => props.theme.button.border};
     background-color: ${props => props.theme.colors.weekDays};
@@ -28,7 +28,7 @@ export const List = styled.ul`
 
 export const Item = styled.li`
     display: flex;
-    width: 48px;
+    max-width: 48px;
     height: 50px;
     align-items: center;
     justify-content: center;

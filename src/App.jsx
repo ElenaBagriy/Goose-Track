@@ -13,7 +13,6 @@ const SharedLayout = lazy(() => import("./components/SharedLayout/SharedLayout")
 const MainLayout = lazy(() => import("./pages/MainLayout/MainLayout"));
 const AccountPage = lazy(() => import("./pages/AccountPage/AccountPage"));
 const CalendarPage = lazy(() => import("./pages/CalendarPage/CalendarPage"));
-const CalendarIndex = lazy(() => import("./components/CalendarComponents/CalendarToolbar/CalendarIndex/CalendarIndex"));
 const StatisticsPage = lazy(() => import("./pages/StatisticsPage/StatisticsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const ChoosedMonth = lazy(() => import("./components/ChoosedMonth/ChoosedMonth"));
@@ -42,7 +41,6 @@ export const App = () => {
           <Route element={<MainLayout />}>
             <Route path="account" element={<AccountPage />} />
             <Route path="calendar" element={<CalendarPage />}>
-              <Route index element={<CalendarIndex />} />
               <Route path="month/:currentMonth" element={<ChoosedMonth />} />
               <Route path="day/:currentDay" element={<ChoosedDay />} />
             </Route>
